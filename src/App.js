@@ -6,40 +6,37 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      books : {
         items: [
-          {
-            volumeInfo: {
-              id: "",
-              title: "",
-              authors: "",
-              description: "",
-              imageLinks: {
-                thumbnail: ""
-              }
-            }
-          }
-        ]
-      },
+          // {
+          //   id: "",
+          //   volumeInfo: {
+          //     title: "",
+          //     authors: [],
+          //     description: "",
+          //     imageLinks: {
+          //       thumbnail: ""
+          //     }
+          //   }
+          // }
+        ],
       error : null,
       loading: false,
-      searchTerm: "henry"
+      searchTerm: "MIT Press"
     }
   }
 
-  BASE_URL = 'https://www.googleapis.com/books/v1/volumes?q='
-
-  componentDidMount() {
-    fetch(`${this.BASE_URL}${this.state.searchTerm}`)
+get = () => {
+  fetch(`${this.BASE_URL}${this.state.searchTerm}`)
       .then(res => {
         if(!res.ok) {
           this.setState({})
         };
         return res.json();
       })
-      .then(books => {
+      .then(data => {
+        const items = data.items
         this.setState({
-          books
+          items
         })
       })
       .catch(err => {
@@ -47,6 +44,19 @@ class App extends React.Component {
           error: err.message
         })
       })
+}
+
+  BASE_URL = 'https://www.googleapis.com/books/v1/volumes?q='
+
+  handleSearchButton = (searchTerm) => {
+    this.setState({
+      searchTerm
+    })
+    this.get();
+  }
+  
+  componentDidMount() {
+    this.get();
   }
 
   render() {
@@ -54,10 +64,10 @@ class App extends React.Component {
       <div>
         <header>
           <h1>Google Book Search</h1>
-          <SearchFilterBar />
+          <SearchFilterBar handleSearchButton={this.handleSearchButton}/>
         </header>
         <main>
-          <BookList books={this.state.books}/>
+          <BookList books={this.state.items}/>
         </main>
       </div>
     );

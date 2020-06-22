@@ -6,7 +6,7 @@ import BookTypeFilter from './BookTypeFilter';
 function SearchFilterBar(props) {
     return(
       <div>
-        <Search />
+        <Search handleSearchButton={props.handleSearchButton}/>
         <div>
             <PrintTypeFilter />
             <BookTypeFilter />
