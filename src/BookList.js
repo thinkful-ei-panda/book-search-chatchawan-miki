@@ -4,7 +4,7 @@ import Book from './Book';
 function BookList(props) {
     return (
         <div>
-            <Book />
+            <Book books={props.books}/>
         </div>
     )
 }
