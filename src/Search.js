@@ -11,7 +11,7 @@ class Search extends React.Component {
             <div>
                 <form onSubmit={this.onSubmitForm}>
                     <label>Search: </label>
-                    <input name="searchTerm" placeholder="e.g. Asimov" type="text"></input>
+                    <input name="searchTerm" placeholder="e.g. Asimov, I, Robot, Puffin Publishing" type="text"></input>
                     <button type="submit">Search!</button>
                 </form>
             </div>
