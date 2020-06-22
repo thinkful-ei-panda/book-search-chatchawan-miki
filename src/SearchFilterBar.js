@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import Search from './Search';
 import PrintTypeFilter from './PrintTypeFilter';
 import BookTypeFilter from './BookTypeFilter';
@@ -6,7 +6,7 @@ import BookTypeFilter from './BookTypeFilter';
 function SearchFilterBar(props) {
     return(
       <div>
-          <Search />
+        <Search />
         <div>
             <PrintTypeFilter />
             <BookTypeFilter />

@@ -1,5 +1,6 @@
-import React from "react";
+import React from 'react';
 import SearchFilterBar from './SearchFilterBar';
+import BookList from './BookList'
 
 class App extends React.Component {
   constructor(props) {
@@ -19,10 +20,15 @@ class App extends React.Component {
 
   render() {
     return (
-      <header>
-        <h1>Google Book Search</h1>
-        <SearchFilterBar />
-      </header>
+      <div>
+        <header>
+          <h1>Google Book Search</h1>
+          <SearchFilterBar />
+        </header>
+        <main>
+          <BookList />
+        </main>
+      </div>
     );
   }
 }

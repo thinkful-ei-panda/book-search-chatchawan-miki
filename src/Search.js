@@ -3,9 +3,13 @@ import React from "react";
 function Search() {
     return (
         <div>
-            Search Title: 
+            <form>
+                <label>Search: </label>
+                <input type="text"></input>
+                <button>Search!</button>
+            </form>
         </div>
     )
 }
 
-export default Search
+export default Search;
