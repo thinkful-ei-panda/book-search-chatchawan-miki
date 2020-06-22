@@ -1,8 +1,5 @@
 import React from "react";
-import Search from './Search'
-import PrintTypeFilter from './PrintTypeFilter'
-import BookTypeFilter from './BookTypeFilter'
-
+import SearchFilterBar from './SearchFilterBar';
 
 class App extends React.Component {
   constructor(props) {
@@ -16,19 +13,15 @@ class App extends React.Component {
 
   BASE_URL = 'https://www.googleapis.com/books/v1/volumes?q='
 
-  componentDidMount() {
-    fetch(this.BASE_URL,)
-  }
+  // componentDidMount() {
+  //   fetch(this.BASE_URL)
+  // }
 
   render() {
     return (
       <header>
         <h1>Google Book Search</h1>
-        <Search />
-        <div>
-          <PrintTypeFilter />
-          <BookTypeFilter />
-        </div>
+        <SearchFilterBar />
       </header>
     );
   }
