@@ -8,8 +8,8 @@ function SearchFilterBar(props) {
       <div>
         <Search handleSearchButton={props.handleSearchButton}/>
         <div>
-            <PrintTypeFilter />
-            <BookTypeFilter />
+            <PrintTypeFilter handlePrintTypeButton={props.handlePrintTypeButton} />
+            <BookTypeFilter handleFilterButton={props.handleFilterButton} />
         </div>
       </div>
     );

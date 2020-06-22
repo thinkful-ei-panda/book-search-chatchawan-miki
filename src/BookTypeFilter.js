@@ -1,18 +1,26 @@
 import React from "react";
 
-function BookTypeFilter() {
-    return (
-        <div>
-            <label>Book type: </label>
-            <select>
-                <option value="Partial">Partial</option>
-                <option value="Full">Full</option>
-                <option value="Free-eBooks">Free-eBooks</option>
-                <option value="Paid">Paid</option>
-                <option value="eBooks">eBooks</option>
-            </select>
-        </div>
-    )
+class BookTypeFilter extends React.Component {
+    onChangeFilter = (e) => {
+        const filter = e.target.value;
+        this.props.handleFilterButton(filter);
+    }
+
+    render() {
+        return (
+            <div>
+                <label>Book type: </label>
+                <select onChange={this.onChangeFilter}>
+                    <option value="FILTER_UNDEFINED">Select Filter</option>
+                    <option value="partial">Partial</option>
+                    <option value="full">Full</option>
+                    <option value="free-ebooks">Free eBooks</option>
+                    <option value="paid-ebooks">Paid eBooks</option>
+                    <option value="eBooks">eBooks</option>
+                </select>
+            </div>
+        )
+    }
 }
 
 export default BookTypeFilter;

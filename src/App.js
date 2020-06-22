@@ -21,12 +21,12 @@ class App extends React.Component {
         ],
       error : null,
       loading: false,
-      searchTerm: "MIT Press"
+      searchTerm: "MIT Press",
     }
   }
 
-get = () => {
-  fetch(`${this.BASE_URL}${this.state.searchTerm}`)
+get = (...args) => {
+  fetch(...args)
       .then(res => {
         if(!res.ok) {
           this.setState({})
@@ -38,6 +38,7 @@ get = () => {
         this.setState({
           items
         })
+        console.log(this.state)
       })
       .catch(err => {
         this.setState({
@@ -52,11 +53,19 @@ get = () => {
     this.setState({
       searchTerm
     })
-    this.get();
+    this.get(`${this.BASE_URL}${this.state.searchTerm}`);
+  }
+
+  handlePrintTypeButton = (printType) => {
+    this.get(`${this.BASE_URL}${this.state.searchTerm}&printType=${printType}`);
+  }
+
+  handleFilterButton = (filter) => {
+    this.get(`${this.BASE_URL}${this.state.searchTerm}&filter=${filter}`);
   }
   
   componentDidMount() {
-    this.get();
+    this.get(`${this.BASE_URL}${this.state.searchTerm}`);
   }
 
   render() {
@@ -64,7 +73,7 @@ get = () => {
       <div>
         <header>
           <h1>Google Book Search</h1>
-          <SearchFilterBar handleSearchButton={this.handleSearchButton}/>
+          <SearchFilterBar handleSearchButton={this.handleSearchButton} handleFilterButton={this.handleFilterButton} handlePrintTypeButton={this.handlePrintTypeButton}/>
         </header>
         <main>
           <BookList books={this.state.items}/>
