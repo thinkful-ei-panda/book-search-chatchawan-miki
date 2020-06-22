@@ -16,9 +16,9 @@ class App extends React.Component {
 
   BASE_URL = 'https://www.googleapis.com/books/v1/volumes?q='
 
-  componentDidMount() {
-    fetch(this.BASE_URL,)
-  }
+  // componentDidMount() {
+  //   fetch(this.BASE_URL,)
+  // }
 
   render() {
     return (
